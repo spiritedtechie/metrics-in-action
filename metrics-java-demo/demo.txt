@@ -6,11 +6,22 @@ GET http://localhost:8080/metrics-java-demo/api/customer/1
 
 POST http://localhost:8080/metrics-java-demo/api/customer
 
+ContentType: application/xml
+
 <customer>
 	<id>1</id>
 	<firstName>John</firstName>
 	<lastName>Doe</lastName>
 </customer>
+
+ContentType: application/json
+
+{
+    "id": "1",
+    "firstName": "John",
+    "lastName": "Doe"
+}
+
 
 ## To check the external HTTP service stub is deployed
 
