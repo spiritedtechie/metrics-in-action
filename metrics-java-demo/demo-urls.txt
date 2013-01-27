@@ -1,4 +1,8 @@
+## To get a customer by id
+
 GET http://localhost:8080/metrics-java-demo/api/customer/1
+
+## To create a customer
 
 POST http://localhost:8080/metrics-java-demo/api/customer
 
@@ -8,6 +12,12 @@ POST http://localhost:8080/metrics-java-demo/api/customer
 	<lastName>Doe</lastName>
 </customer>
 
-GET http://localhost:8080/metrics-java-demo/monitoring
+## To check the external HTTP service stub is deployed
 
-http://localhost:8080/http-service-stub/myresource
+GET http://localhost:8080/http-service-stub/myresource/address
+
+
+## To bring up the Metrics admin page which has links to all metrics
+
+GET http://localhost:8080/metrics-java-demo/operations
+
