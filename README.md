@@ -12,11 +12,7 @@ To run the examples.
 
   http://localhost:8080/metrics-java-demo/api/customer
 
-  <customer>
-    <id>1</id>
-	  <firstName>John</firstName>
-	  <lastName>Doe</lastName>
-  </customer>
+Check the demo.txt file in metrics-java-demo for further info. on how to do this.
 
 5. GET http://localhost:8080/metrics-java-demo/api/customer/1
 6. Visit the Metrics Admin page:
