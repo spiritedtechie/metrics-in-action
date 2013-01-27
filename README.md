@@ -12,7 +12,13 @@ To run the examples.
 
   http://localhost:8080/metrics-java-demo/api/customer
 
-Check the demo.txt file in metrics-java-demo for further info. on how to do this.
+Content-Type header: application/json
+
+{
+    "id": "1",
+    "firstName": "John",
+    "lastName": "Doe"
+}
 
 5. GET http://localhost:8080/metrics-java-demo/api/customer/1
 6. Visit the Metrics Admin page:
