@@ -1,0 +1,13 @@
+GET http://localhost:8080/metrics-java-demo/api/customer/1
+
+POST http://localhost:8080/metrics-java-demo/api/customer
+
+<customer>
+	<id>1</id>
+	<firstName>John</firstName>
+	<lastName>Doe</lastName>
+</customer>
+
+GET http://localhost:8080/metrics-java-demo/monitoring
+
+http://localhost:8080/http-service-stub/myresource

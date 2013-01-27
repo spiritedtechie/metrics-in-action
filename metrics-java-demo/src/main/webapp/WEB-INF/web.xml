@@ -1,0 +1,76 @@
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
+
+	<listener>
+		<listener-class>org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap</listener-class>
+	</listener>
+
+	<listener>
+		<listener-class>org.jboss.resteasy.plugins.spring.SpringContextLoaderListener</listener-class>
+	</listener>
+
+	<!-- Servlets -->
+	<servlet>
+		<servlet-name>Resteasy</servlet-name>
+		<servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>metrics-admin</servlet-name>
+		<servlet-class>com.yammer.metrics.reporting.AdminServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>metrics-healthcheck</servlet-name>
+		<servlet-class>com.yammer.metrics.reporting.HealthCheckServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>metrics-metrics</servlet-name>
+		<servlet-class>com.yammer.metrics.reporting.MetricsServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>metrics-ping</servlet-name>
+		<servlet-class>com.yammer.metrics.reporting.PingServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>metrics-thread</servlet-name>
+		<servlet-class>com.yammer.metrics.reporting.ThreadDumpServlet</servlet-class>
+	</servlet>
+
+	<!-- Servlet Mappings -->
+	<servlet-mapping>
+		<servlet-name>metrics-admin</servlet-name>
+		<url-pattern>/operations</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>metrics-healthcheck</servlet-name>
+		<url-pattern>/operations/healthcheck</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>metrics-metrics</servlet-name>
+		<url-pattern>/operations/metrics</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>metrics-ping</servlet-name>
+		<url-pattern>/operations/ping</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>metrics-thread</servlet-name>
+		<url-pattern>/operations/threads</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Resteasy</servlet-name>
+		<url-pattern>/*</url-pattern>
+	</servlet-mapping>
+
+	<!-- Metrics - webapp API instrumentation filter -->
+	<filter>
+		<filter-name>webappMetricsFilter</filter-name>
+		<filter-class>com.yammer.metrics.web.DefaultWebappMetricsFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>webappMetricsFilter</filter-name>
+		<url-pattern>/api/*</url-pattern>
+	</filter-mapping>
+
+</web-app>
