@@ -1,0 +1,516 @@
+{
+  "jvm" : {
+    "vm" : {
+      "name" : "Java HotSpot(TM) 64-Bit Server VM",
+      "version" : "1.7.0_10-b18"
+    },
+    "memory" : {
+      "totalInit" : 9.142272E7,
+      "totalUsed" : 1.55997152E8,
+      "totalMax" : 8.46331904E8,
+      "totalCommitted" : 3.13720832E8,
+      "heapInit" : 6.7108864E7,
+      "heapUsed" : 8.0962032E7,
+      "heapMax" : 4.77233152E8,
+      "heapCommitted" : 2.2577152E8,
+      "heap_usage" : 0.16964880092823056,
+      "non_heap_usage" : 0.2032914161682129,
+      "memory_pool_usages" : {
+        "Code Cache" : 0.10793749491373698,
+        "PS Eden Space" : 0.07098472098824495,
+        "PS Old Gen" : 0.13149645598281307,
+        "PS Perm Gen" : 0.23904913663864136,
+        "PS Survivor Space" : 0.9982419358086341
+      }
+    },
+    "buffers" : {
+      "direct" : {
+        "count" : 1,
+        "memoryUsed" : 46,
+        "totalCapacity" : 46
+      },
+      "mapped" : {
+        "count" : 0,
+        "memoryUsed" : 0,
+        "totalCapacity" : 0
+      }
+    },
+    "daemon_thread_count" : 20,
+    "thread_count" : 46,
+    "current_time" : 1359335154350,
+    "uptime" : 4304,
+    "fd_usage" : 0.0345703125,
+    "thread-states" : {
+      "terminated" : 0.0,
+      "waiting" : 0.5217391304347826,
+      "timed_waiting" : 0.2608695652173913,
+      "runnable" : 0.21739130434782608,
+      "new" : 0.0,
+      "blocked" : 0.0
+    },
+    "garbage-collectors" : {
+      "PS MarkSweep" : {
+        "runs" : 1,
+        "time" : 155
+      },
+      "PS Scavenge" : {
+        "runs" : 9,
+        "time" : 167
+      }
+    }
+  },
+  "com.yammer.metrics.web.WebappMetricsFilter" : {
+    "activeRequests" : {
+      "type" : "counter",
+      "count" : 0
+    },
+    "requests" : {
+      "type" : "timer",
+      "duration" : {
+        "unit" : "milliseconds",
+        "min" : 3.362,
+        "max" : 424.033,
+        "mean" : 86.092375,
+        "std_dev" : 151.39792646149183,
+        "median" : 16.6205,
+        "p75" : 153.58474999999999,
+        "p95" : 424.033,
+        "p98" : 424.033,
+        "p99" : 424.033,
+        "p999" : 424.033
+      },
+      "rate" : {
+        "unit" : "seconds",
+        "count" : 8,
+        "mean" : 0.001867263105607144,
+        "m1" : 2.3844237814591076E-31,
+        "m5" : 2.6381108102995088E-8,
+        "m15" : 8.793753168354427E-5
+      }
+    },
+    "responseCodes.badRequest" : {
+      "type" : "meter",
+      "event_type" : "responses",
+      "unit" : "seconds",
+      "count" : 4,
+      "mean" : 9.336311147906697E-4,
+      "m1" : 4.049877627928148E-32,
+      "m5" : 1.168957241471634E-8,
+      "m15" : 4.2469697318038174E-5
+    },
+    "responseCodes.created" : {
+      "type" : "meter",
+      "event_type" : "responses",
+      "unit" : "seconds",
+      "count" : 0,
+      "mean" : 0.0,
+      "m1" : 0.0,
+      "m5" : 0.0,
+      "m15" : 0.0
+    },
+    "responseCodes.noContent" : {
+      "type" : "meter",
+      "event_type" : "responses",
+      "unit" : "seconds",
+      "count" : 0,
+      "mean" : 0.0,
+      "m1" : 0.0,
+      "m5" : 0.0,
+      "m15" : 0.0
+    },
+    "responseCodes.notFound" : {
+      "type" : "meter",
+      "event_type" : "responses",
+      "unit" : "seconds",
+      "count" : 0,
+      "mean" : 0.0,
+      "m1" : 0.0,
+      "m5" : 0.0,
+      "m15" : 0.0
+    },
+    "responseCodes.ok" : {
+      "type" : "meter",
+      "event_type" : "responses",
+      "unit" : "seconds",
+      "count" : 0,
+      "mean" : 0.0,
+      "m1" : 0.0,
+      "m5" : 0.0,
+      "m15" : 0.0
+    },
+    "responseCodes.other" : {
+      "type" : "meter",
+      "event_type" : "responses",
+      "unit" : "seconds",
+      "count" : 4,
+      "mean" : 9.33631192586961E-4,
+      "m1" : 1.9794360186662887E-31,
+      "m5" : 1.4691535688278762E-8,
+      "m15" : 4.546783436550636E-5
+    },
+    "responseCodes.serverError" : {
+      "type" : "meter",
+      "event_type" : "responses",
+      "unit" : "seconds",
+      "count" : 0,
+      "mean" : 0.0,
+      "m1" : 0.0,
+      "m5" : 0.0,
+      "m15" : 0.0
+    }
+  },
+  "lab.api.CustomerResource" : {
+    "create-customer" : {
+      "type" : "timer",
+      "duration" : {
+        "unit" : "milliseconds",
+        "min" : 2.516,
+        "max" : 262.387,
+        "mean" : 67.676,
+        "std_dev" : 129.80765478455677,
+        "median" : 2.9005,
+        "p75" : 197.58425,
+        "p95" : 262.387,
+        "p98" : 262.387,
+        "p99" : 262.387,
+        "p999" : 262.387
+      },
+      "rate" : {
+        "unit" : "seconds",
+        "count" : 4,
+        "mean" : 9.336293171987392E-4,
+        "m1" : 1.9794360186662887E-31,
+        "m5" : 1.4691535688278762E-8,
+        "m15" : 4.546783436550636E-5
+      }
+    },
+    "create-customer-failures" : {
+      "type" : "meter",
+      "event_type" : "exceptions",
+      "unit" : "seconds",
+      "count" : 4,
+      "mean" : 9.336072491566806E-4,
+      "m1" : 1.9794360186662887E-31,
+      "m5" : 1.4691535688278762E-8,
+      "m15" : 4.546783436550636E-5
+    },
+    "get-customer" : {
+      "type" : "timer",
+      "duration" : {
+        "unit" : "milliseconds",
+        "min" : 0.0,
+        "max" : 0.0,
+        "mean" : 0.0,
+        "std_dev" : 0.0,
+        "median" : 0.0,
+        "p75" : 0.0,
+        "p95" : 0.0,
+        "p98" : 0.0,
+        "p99" : 0.0,
+        "p999" : 0.0
+      },
+      "rate" : {
+        "unit" : "seconds",
+        "count" : 0,
+        "mean" : 0.0,
+        "m1" : 0.0,
+        "m5" : 0.0,
+        "m15" : 0.0
+      }
+    },
+    "get-customer-failures" : {
+      "type" : "meter",
+      "event_type" : "exceptions",
+      "unit" : "seconds",
+      "count" : 0,
+      "mean" : 0.0,
+      "m1" : 0.0,
+      "m5" : 0.0,
+      "m15" : 0.0
+    }
+  },
+  "org.apache.http.client.HttpClient" : {
+    "connect-requests" : {
+      "type" : "timer",
+      "duration" : {
+        "unit" : "milliseconds",
+        "min" : 0.0,
+        "max" : 0.0,
+        "mean" : 0.0,
+        "std_dev" : 0.0,
+        "median" : 0.0,
+        "p75" : 0.0,
+        "p95" : 0.0,
+        "p98" : 0.0,
+        "p99" : 0.0,
+        "p999" : 0.0
+      },
+      "rate" : {
+        "unit" : "seconds",
+        "count" : 0,
+        "mean" : 0.0,
+        "m1" : 0.0,
+        "m5" : 0.0,
+        "m15" : 0.0
+      }
+    },
+    "delete-requests" : {
+      "type" : "timer",
+      "duration" : {
+        "unit" : "milliseconds",
+        "min" : 0.0,
+        "max" : 0.0,
+        "mean" : 0.0,
+        "std_dev" : 0.0,
+        "median" : 0.0,
+        "p75" : 0.0,
+        "p95" : 0.0,
+        "p98" : 0.0,
+        "p99" : 0.0,
+        "p999" : 0.0
+      },
+      "rate" : {
+        "unit" : "seconds",
+        "count" : 0,
+        "mean" : 0.0,
+        "m1" : 0.0,
+        "m5" : 0.0,
+        "m15" : 0.0
+      }
+    },
+    "get-requests" : {
+      "type" : "timer",
+      "duration" : {
+        "unit" : "milliseconds",
+        "min" : 1.243,
+        "max" : 53.761,
+        "mean" : 14.63275,
+        "std_dev" : 26.087025413348044,
+        "median" : 1.7635,
+        "p75" : 40.80425,
+        "p95" : 53.761,
+        "p98" : 53.761,
+        "p99" : 53.761,
+        "p999" : 53.761
+      },
+      "rate" : {
+        "unit" : "seconds",
+        "count" : 4,
+        "mean" : 9.354400917830245E-4,
+        "m1" : 2.050548976763321E-31,
+        "m5" : 1.4400372782397675E-7,
+        "m15" : 0.0017756083819396333
+      }
+    },
+    "head-requests" : {
+      "type" : "timer",
+      "duration" : {
+        "unit" : "milliseconds",
+        "min" : 0.0,
+        "max" : 0.0,
+        "mean" : 0.0,
+        "std_dev" : 0.0,
+        "median" : 0.0,
+        "p75" : 0.0,
+        "p95" : 0.0,
+        "p98" : 0.0,
+        "p99" : 0.0,
+        "p999" : 0.0
+      },
+      "rate" : {
+        "unit" : "seconds",
+        "count" : 0,
+        "mean" : 0.0,
+        "m1" : 0.0,
+        "m5" : 0.0,
+        "m15" : 0.0
+      }
+    },
+    "move-requests" : {
+      "type" : "timer",
+      "duration" : {
+        "unit" : "milliseconds",
+        "min" : 0.0,
+        "max" : 0.0,
+        "mean" : 0.0,
+        "std_dev" : 0.0,
+        "median" : 0.0,
+        "p75" : 0.0,
+        "p95" : 0.0,
+        "p98" : 0.0,
+        "p99" : 0.0,
+        "p999" : 0.0
+      },
+      "rate" : {
+        "unit" : "seconds",
+        "count" : 0,
+        "mean" : 0.0,
+        "m1" : 0.0,
+        "m5" : 0.0,
+        "m15" : 0.0
+      }
+    },
+    "options-requests" : {
+      "type" : "timer",
+      "duration" : {
+        "unit" : "milliseconds",
+        "min" : 0.0,
+        "max" : 0.0,
+        "mean" : 0.0,
+        "std_dev" : 0.0,
+        "median" : 0.0,
+        "p75" : 0.0,
+        "p95" : 0.0,
+        "p98" : 0.0,
+        "p99" : 0.0,
+        "p999" : 0.0
+      },
+      "rate" : {
+        "unit" : "seconds",
+        "count" : 0,
+        "mean" : 0.0,
+        "m1" : 0.0,
+        "m5" : 0.0,
+        "m15" : 0.0
+      }
+    },
+    "other-requests" : {
+      "type" : "timer",
+      "duration" : {
+        "unit" : "milliseconds",
+        "min" : 0.0,
+        "max" : 0.0,
+        "mean" : 0.0,
+        "std_dev" : 0.0,
+        "median" : 0.0,
+        "p75" : 0.0,
+        "p95" : 0.0,
+        "p98" : 0.0,
+        "p99" : 0.0,
+        "p999" : 0.0
+      },
+      "rate" : {
+        "unit" : "seconds",
+        "count" : 0,
+        "mean" : 0.0,
+        "m1" : 0.0,
+        "m5" : 0.0,
+        "m15" : 0.0
+      }
+    },
+    "patch-requests" : {
+      "type" : "timer",
+      "duration" : {
+        "unit" : "milliseconds",
+        "min" : 0.0,
+        "max" : 0.0,
+        "mean" : 0.0,
+        "std_dev" : 0.0,
+        "median" : 0.0,
+        "p75" : 0.0,
+        "p95" : 0.0,
+        "p98" : 0.0,
+        "p99" : 0.0,
+        "p999" : 0.0
+      },
+      "rate" : {
+        "unit" : "seconds",
+        "count" : 0,
+        "mean" : 0.0,
+        "m1" : 0.0,
+        "m5" : 0.0,
+        "m15" : 0.0
+      }
+    },
+    "post-requests" : {
+      "type" : "timer",
+      "duration" : {
+        "unit" : "milliseconds",
+        "min" : 0.0,
+        "max" : 0.0,
+        "mean" : 0.0,
+        "std_dev" : 0.0,
+        "median" : 0.0,
+        "p75" : 0.0,
+        "p95" : 0.0,
+        "p98" : 0.0,
+        "p99" : 0.0,
+        "p999" : 0.0
+      },
+      "rate" : {
+        "unit" : "seconds",
+        "count" : 0,
+        "mean" : 0.0,
+        "m1" : 0.0,
+        "m5" : 0.0,
+        "m15" : 0.0
+      }
+    },
+    "put-requests" : {
+      "type" : "timer",
+      "duration" : {
+        "unit" : "milliseconds",
+        "min" : 0.0,
+        "max" : 0.0,
+        "mean" : 0.0,
+        "std_dev" : 0.0,
+        "median" : 0.0,
+        "p75" : 0.0,
+        "p95" : 0.0,
+        "p98" : 0.0,
+        "p99" : 0.0,
+        "p999" : 0.0
+      },
+      "rate" : {
+        "unit" : "seconds",
+        "count" : 0,
+        "mean" : 0.0,
+        "m1" : 0.0,
+        "m5" : 0.0,
+        "m15" : 0.0
+      }
+    },
+    "trace-requests" : {
+      "type" : "timer",
+      "duration" : {
+        "unit" : "milliseconds",
+        "min" : 0.0,
+        "max" : 0.0,
+        "mean" : 0.0,
+        "std_dev" : 0.0,
+        "median" : 0.0,
+        "p75" : 0.0,
+        "p95" : 0.0,
+        "p98" : 0.0,
+        "p99" : 0.0,
+        "p999" : 0.0
+      },
+      "rate" : {
+        "unit" : "seconds",
+        "count" : 0,
+        "mean" : 0.0,
+        "m1" : 0.0,
+        "m5" : 0.0,
+        "m15" : 0.0
+      }
+    }
+  },
+  "org.apache.http.conn.ClientConnectionManager" : {
+    "available-connections" : {
+      "type" : "gauge",
+      "value" : 0
+    },
+    "leased-connections" : {
+      "type" : "gauge",
+      "value" : 0
+    },
+    "max-connections" : {
+      "type" : "gauge",
+      "value" : 20
+    },
+    "pending-connections" : {
+      "type" : "gauge",
+      "value" : 0
+    }
+  }
+}
