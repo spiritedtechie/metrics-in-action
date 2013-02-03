@@ -1,6 +1,7 @@
 package lab.api;
 
 import java.net.URI;
+import java.util.concurrent.TimeUnit;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -42,8 +43,8 @@ public class CustomerResource {
     @GET
     @Path("/{customerId}")
     @Produces(MediaType.APPLICATION_XML)
-    @Timed(name = "get-customer")
-    @ExceptionMetered(name = "get-customer-failures")
+    @Timed(name = "get-customer", rateUnit = TimeUnit.MILLISECONDS)
+    @ExceptionMetered(name = "get-customer-failures", rateUnit = TimeUnit.MILLISECONDS)
     public Response getCustomer(@PathParam("customerId") final String customerId) {
 
         LOG.info("*** Customer Requested With Id: " + customerId);
@@ -59,8 +60,8 @@ public class CustomerResource {
 
     @POST
     @Consumes(value = { MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-    @Timed(name = "create-customer")
-    @ExceptionMetered(name = "create-customer-failures")
+    @Timed(name = "create-customer", rateUnit = TimeUnit.MILLISECONDS)
+    @ExceptionMetered(name = "create-customer-failures", rateUnit = TimeUnit.MILLISECONDS)
     public Response createCustomer(final Customer customer) throws Exception {
 
         LOG.info("*** Customer Creation Requested: " + customer);

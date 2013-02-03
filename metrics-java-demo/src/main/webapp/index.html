@@ -51,17 +51,17 @@ body {
 
 		addTimer("customerCreateTimer",
 				"lab.api.CustomerResource",
-				"create-customer", 10, "Create Customer Requests", "create", 1);
+				"create-customer", 2, "Create Customer Requests", "create", 20);
 		
 		addMeter("customerCreateFailures", "lab.api.CustomerResource",
- 				"create-customer-failures", 100, "Create Customer Failures");
+ 				"create-customer-failures", 3, "Create Customer Failures");
 		
 		addTimer("customerFindTimer",
 				"lab.api.CustomerResource",
-				"get-customer", 10, "Find Customer Requests", "find", 1);
+				"get-customer", 2, "Find Customer Requests", "find", 5);
 		
 		addMeter("customerFindFailures", "lab.api.CustomerResource",
- 				"get-customer-failures", 100, "Find Customer Failures");
+ 				"get-customer-failures", 3, "Find Customer Failures");
 	}
 
 	$(document).ready(function() {
