@@ -13,6 +13,8 @@ public class Customer {
 
     private String address;
 
+    private boolean isVulnerable = false;
+
     public String getId() {
         return id;
     }
@@ -45,10 +47,18 @@ public class Customer {
         this.address = address;
     }
 
+    public boolean isVulnerable() {
+        return isVulnerable;
+    }
+
+    public void setVulnerable(final boolean isVulnerable) {
+        this.isVulnerable = isVulnerable;
+    }
+
     @Override
     public String toString() {
         return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", address=" + address
-                + "]";
+                + ", vulnerable=" + isVulnerable + "]";
     }
 
 }
