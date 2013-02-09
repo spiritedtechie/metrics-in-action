@@ -48,7 +48,7 @@ public class CustomerResource {
     @ExceptionMetered(name = "get-customers-failures", rateUnit = TimeUnit.MILLISECONDS)
     public Response getCustomers(@QueryParam("vulnerable") final boolean vulnerableOnly) {
 
-        LOG.info("*** Customers Requested");
+        LOG.info("*** Customers Requested. Vulnerable? " + vulnerableOnly);
 
         final Customers customers = service.allCustomers(vulnerableOnly);
 

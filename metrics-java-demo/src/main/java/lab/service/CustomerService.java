@@ -67,8 +67,10 @@ public class CustomerService {
 
         for (final Customer customer : customerMap.values()) {
 
-            if (vulnerableOnly && customer.isVulnerable()) {
-                customers.addCustomer(customer);
+            if (vulnerableOnly) {
+                if (customer.isVulnerable()) {
+                    customers.addCustomer(customer);
+                }
             } else {
                 customers.addCustomer(customer);
             }
