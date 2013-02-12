@@ -6,7 +6,6 @@ import java.util.Map;
 
 import lab.api.CustomerResource;
 import lab.domain.Customer;
-import lab.domain.Customers;
 import lab.http.HttpFactory;
 
 import org.apache.commons.io.IOUtils;
@@ -59,24 +58,6 @@ public class CustomerService {
         }
 
         return null;
-    }
-
-    public Customers allCustomers(final boolean vulnerableOnly) {
-
-        final Customers customers = new Customers();
-
-        for (final Customer customer : customerMap.values()) {
-
-            if (vulnerableOnly) {
-                if (customer.isVulnerable()) {
-                    customers.addCustomer(customer);
-                }
-            } else {
-                customers.addCustomer(customer);
-            }
-        }
-
-        return customers;
     }
 
     private String findAddressInformation() {

@@ -9,13 +9,11 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import lab.domain.Customer;
-import lab.domain.Customers;
 import lab.service.CustomerService;
 
 import org.apache.commons.logging.Log;
@@ -40,23 +38,6 @@ public class CustomerResource {
     }
 
     public CustomerResource() {
-    }
-
-    @GET
-    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-    @Timed(name = "get-customers", rateUnit = TimeUnit.MILLISECONDS)
-    @ExceptionMetered(name = "get-customers-failures", rateUnit = TimeUnit.MILLISECONDS)
-    public Response getCustomers(@QueryParam("vulnerable") final boolean vulnerableOnly) {
-
-        LOG.info("*** Customers Requested. Vulnerable? " + vulnerableOnly);
-
-        final Customers customers = service.allCustomers(vulnerableOnly);
-
-        if (customers == null || customers.getCustomers() == null || customers.getCustomers().isEmpty()) {
-            return Response.status(Status.NOT_FOUND).entity("Customers not found").build();
-        }
-
-        return Response.ok(customers).build();
     }
 
     @GET
