@@ -1,10 +1,10 @@
 ## To get a customer by id
 
-GET http://localhost:8080/metrics-customer-api/api/customer/1
+GET http://localhost:8080/metrics-customer-api/api/customers/1
 
 ## To create a customer
 
-POST http://localhost:8080/metrics-customer-api/api/customer
+POST http://localhost:8080/metrics-customer-api/api/customers
 
 ContentType: application/xml
 
