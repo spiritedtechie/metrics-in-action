@@ -10,7 +10,7 @@ To run the examples.
 3. Deploy the metrics demo app
 4. POST a customer to:
 
-  http://localhost:8080/metrics-java-demo/api/customer
+  http://localhost:8080/metrics-customer-api/api/customer
 
   Content-Type header: application/json
 
@@ -20,7 +20,7 @@ To run the examples.
       "lastName": "Doe"
   }
 
-5. GET http://localhost:8080/metrics-java-demo/api/customer/1
+5. GET http://localhost:8080/metrics-customer-api/api/customer/1
 6. Visit the Metrics Admin page:
   
-  http://localhost:8080/metrics-java-demo/operations
+  http://localhost:8080/metrics-customer-api/operations
