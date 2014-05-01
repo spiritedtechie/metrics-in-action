@@ -24,13 +24,13 @@ To get it running:
 
     mvn clean package
     
-4. Deploy the HTTP service stub to standalone deployments
+4. Deploy the HTTP service stub to standalone deployments folder
 
 5. Build the metrics-customer-api
 
     mvn clean package
 
-6. Deploy the metrics-customer-api WAR to standalone deployment
+6. Deploy the metrics-customer-api WAR to standalone deployments folder
 
 7. POST a customer via a REST client to
 
