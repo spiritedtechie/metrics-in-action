@@ -1,7 +1,7 @@
-metrics-examples
-================
+dropwizard-metrics-in-action
+============================
 
-Example projects using Yammer's Metrics library.
+Working exmaple of JVM- and application-level metrics using Dropwizard Metrics.
 
 To run the examples.
 
