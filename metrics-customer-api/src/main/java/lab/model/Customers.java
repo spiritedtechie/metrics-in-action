@@ -1,4 +1,4 @@
-package lab.domain;
+package lab.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement()
+@XmlRootElement
 public class Customers {
 
     private List<Customer> customers = new ArrayList<Customer>();

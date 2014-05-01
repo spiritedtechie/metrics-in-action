@@ -9,7 +9,8 @@
 		</layout>
 	</appender>
 
-	<appender name="metrics" class="com.yammer.metrics.log4j.InstrumentedAppender" />
+	<appender name="metrics"
+		class="com.codahale.metrics.log4j.InstrumentedAppender" />
 
 	<root>
 		<priority value="debug" />

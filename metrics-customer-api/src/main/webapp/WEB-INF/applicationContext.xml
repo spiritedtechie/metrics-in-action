@@ -1,14 +1,32 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:metrics="http://www.yammer.com/schema/metrics"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="
-		   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
-           http://www.yammer.com/schema/metrics http://www.yammer.com/schema/metrics/metrics.xsd
-           http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:metrics="http://www.ryantenney.com/schema/metrics"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context 
+		   http://www.springframework.org/schema/context/spring-context-3.1.xsd
+           http://www.ryantenney.com/schema/metrics
+           http://www.ryantenney.com/schema/metrics/metrics-3.0.xsd">
 
 	<context:component-scan base-package="lab" />
 
-	<metrics:annotation-driven />
+	<!-- Registry should be defined in only one context XML file -->
+	<bean id="metricRegistry" class="lab.metrics.registry.MyMetricRegistry"
+		factory-method="getRegistry" />
+
+	<bean id="healthCheckRegistry" class="lab.metrics.registry.MyHealthCheckRegistry"
+		factory-method="getRegistry" />
+
+
+	<!-- Instructed HTTP client -->
+	<bean id="httpClient" class="com.codahale.metrics.httpclient.InstrumentedHttpClient">
+		<constructor-arg ref="metricRegistry" />
+	</bean>
+
+
+	<!-- annotation-driven must be included in all context files -->
+	<metrics:annotation-driven metric-registry="metricRegistry"
+		health-check-registry="healthCheckRegistry" />
 
 	<!-- other beans -->
 

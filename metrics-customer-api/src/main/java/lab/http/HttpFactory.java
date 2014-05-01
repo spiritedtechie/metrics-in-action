@@ -1,19 +1,25 @@
 package lab.http;
 
 import org.apache.http.client.HttpClient;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-import com.yammer.metrics.httpclient.InstrumentedHttpClient;
-
+@Component
 public class HttpFactory {
 
-    private static HttpClient httpClient;
+    private final HttpClient httpClient;
 
-    static {
+    @Autowired
+    public HttpFactory(HttpClient httpClient) {
+        this.httpClient = httpClient;
+
+        addHookToShutdownConnectionManager();
+    }
+
+    private void addHookToShutdownConnectionManager() {
         Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
-
             @Override
             public void run() {
-                System.out.println("Shutting down http client");
                 if (httpClient != null) {
                     httpClient.getConnectionManager().shutdown();
                 }
@@ -21,12 +27,7 @@ public class HttpFactory {
         }));
     }
 
-    public static HttpClient getHttp() {
-
-        if (httpClient == null) {
-            httpClient = new InstrumentedHttpClient();
-        }
-
+    public HttpClient getHttp() {
         return httpClient;
     }
 

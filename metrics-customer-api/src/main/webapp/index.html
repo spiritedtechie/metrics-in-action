@@ -1,169 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<meta charset="utf-8">
-<title>Metrics-Watcher</title>
+	<meta charset="utf-8">
+	<title>Metrics-Watcher Examples</title>
 
-<style>
-body {
-	padding-top: 60px;
-	/* 60px to make the container go all the way to the bottom of the topbar */
-}
-</style>
+	<!-- must include jquery -->
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
-<!--  You must include bootstrap -->
-<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-<link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+	<!-- must include bootstrap -->
+	<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
-<!-- And include jquery -->
-<script language="JavaScript"
-    src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
-<script language="JavaScript"
-    src="http://jquery-json.googlecode.com/files/jquery.json-2.2.min.js"></script>
+	<!--  And include the metrics-watcher library -->
+	<script src="metrics-watcher.js"></script>
+	<!-- And include the metrics stylesheet -->
+	<link href="metrics-watcher-style.css" rel="stylesheet">
 
-<!--  And include the metrics-watcher library -->
-<script language="JavaScript" src="metrics-watcher.js"></script>
+	<script>
+		// See example-metrics.js for sample of the Metrics-servlet format
+		function addGraphs() {
+			
 
-<!-- And include the metrics stylesheet -->
-<link href="metrics-watcher-style.css" rel="stylesheet">
+// 			metricsWatcher.addCounter("counterExample", 
+// 					"com.codahale.metrics.servlet.AbstractInstrumentedFilter", "activeRequests",
+// 					 2, "Counter");
 
-<script>
-	function addGraphs() {
-		// 		addMeter("meterExample", "com.iovation.metrics.watcher.example.Dao",
-		// 				"dao-writes-meter", 500, "Database Writes(Meter)");
+// 			metricsWatcher.addLinkedCounter("linkedCounterExample",
+// 					"com.codahale.metrics.servlet.AbstractInstrumentedFilter", "activeRequests",
+// 					"com.codahale.metrics.servlet.AbstractInstrumentedFilter", "totalRequests",
+// 					"Linked Counter");
+			
+// 			metricsWatcher.addLinkedCounter("linkedTimerCounterExample",
+// 					"net.sf.ehcache.Cache.cacheName", "gets",
+// 					"com.codahale.metrics.servlet.AbstractInstrumentedFilter", "requests",
+// 					"Linked Counter");
 
-		// 		addCounter("counterExample",
-		// 				"com.iovation.metrics.watcher.example.ConnectionPool",
-		// 				"connectionsCreatedCounter", 125,
-		// 				"Open/Max Connections(Counter)");
+// 			metricsWatcher.addGauge("gaugeExample", "jvm.memory.non-heap",
+// 					"max", "Gauge");
 
-		// 		addLinkedCounter("linkedCounterExample",
-		// 				"com.iovation.metrics.watcher.example.ConnectionPool",
-		// 				"connectionsInUseCounter",
-		// 				"com.iovation.metrics.watcher.example.ConnectionPool",
-		// 				"connectionsCreatedCounter",
-		// 				"In Use/Open Connections(Linked Counter)");
+			metricsWatcher.addTimer("createCustomerTimer", "lab.api.CustomerResource", "create-customer-timed", 10, "Customer Creation", "count", 1);
+			metricsWatcher.addTimer("getCustomerTimer", "lab.api.CustomerResource", "get-customer-timed", 10, "Customer Find", "count", 1);
+			
+			metricsWatcher.addMeter("getCustomerExceptions", "lab.api.CustomerResource",
+					"get-customer-exception-meter", 10, "Get Customer Failures");
+			metricsWatcher.addMeter("createCustomerExceptions", "lab.api.CustomerResource",
+					"create-customer-exception-meter", 10, "Create Customer Failures");
+			
+// 			metricsWatcher.addJvm("jvmExample", "jvm", "JVM Statistics");
 
-		addTimer("customerCreateTimer", "lab.api.CustomerResource",
-				"create-customer", 2, "Create Customer Requests", "create", 20);
+// 			metricsWatcher.addCache("queryCache", "net.sf.ehcache.Cache.cacheName", "Ehcache");
+//			metricsWatcher.addLog4j("log4jExample", "org.apache.log4j.Appender", "Log4j");
+			metricsWatcher.addWeb("webExample", "com.codahale.metrics.servlet.AbstractInstrumentedFilter", "Web Server");
+		}
 
-		addMeter("customerCreateFailures", "lab.api.CustomerResource",
-				"create-customer-failures", 3, "Create Customer Failures");
-
-		addTimer("customerFindTimer", "lab.api.CustomerResource",
-				"get-customer", 2, "Find Customer Requests", "find", 5);
-
-		addMeter("customerFindFailures", "lab.api.CustomerResource",
-				"get-customer-failures", 3, "Find Customer Failures");
-	}
-
-	$(document).ready(function() {
-		addGraphs();
-		initGraphs();
-		keepUpdatingGraphs();
-	});
-
-	function keepUpdatingGraphs() {
-		downloadMetricData();
-		setTimeout(keepUpdatingGraphs, 1000);
-	}
-
-	function downloadMetricData() {
-		//updateGraphs(exampleMetricsData);
-		// Normally metric data will be loaded from a servlet with an Ajax call like the following.
-		// For this example, it is hardcoded.
-
-		url = "operations/metrics";
-		$.ajax({
-			contentType : "application/json",
-			url : url,
-			success : function(data) {
-				updateGraphs(data);
-			},
-			error : function(xhr, ajaxOptions, thrownError) {
-				alert("Error - " + xhr.status + "Message: " + thrownError);
-			},
-			async : false
+		$(document).ready(function() {
+			addGraphs();
+			metricsWatcher.initGraphs();
+			keepUpdatingGraphs();
 		});
-	}
-</script>
 
+		function keepUpdatingGraphs() {
+			downloadMetricData();
+			setTimeout(keepUpdatingGraphs, 500000);
+		}
+
+		function downloadMetricData() {
+			// metricsWatcher.updateGraphs(exampleMetricsData);
+			url = "ops/metrics";
+			$.ajax({
+				contentType : "application/json",
+				url : url,
+				success : function(data) {
+					metricsWatcher.updateGraphs(data);
+				},
+				error : function(xhr, ajaxOptions, thrownError) {
+					alert("Error - " + xhr.status + "Message: " + thrownError);
+				},
+				async : false
+			});
+		}
+	</script>
 </head>
-
 <body>
-
-    <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container">
-
-                <a class="btn btn-navbar" data-toggle="collapse"
-                    data-target=".nav-collapse"> <span
-                    class="icon-bar"></span> <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a> <a class="brand" href="#"> Metrics Watcher Example</a>
-                <div class="nav-collapse">
-                    <ul class="nav">
-
-                    </ul>
-                </div>
-                <!--/.nav-collapse -->
-            </div>
-        </div>
-    </div>
-
-    <div class="container mainContent">
-        <!-- 
-		<div class="hero-unit">
-			<h1>Metrics Watcher</h1>
-			<p>Real-time graphing of your Java application Metrics(http://metrics.codahale.com)</p>
-			<p>
-				
-			</p>
+	<nav class="navbar navbar-default navbar-static-top" role="navigation">
+		<a class="btn navbar-btn" data-toggle="collapse" data-target=".navbar-collapse">
+			<span class="glyphicon-bar"></span>
+			<span class="glyphicon-bar"></span>
+			<span class="glyphicon-bar"></span>
+		</a>
+		<a class="navbar-brand" href="#">Customer Service Metrics</a>
+		<div class="navbar-collapse">
+			<ul class="nav"></ul>
 		</div>
- -->
-        <h1>Metrics Watcher Examples</h1>
+	</nav>
 
-        <p>Here are examples of the different gauge types that
-            Metrics-watcher currently supports. You can view the source
-            of this page for sample usage, and the source of
-            metrics-watcher.js for API documentation.</p>
-
-        <!-- 		<div class="row"> -->
-        <!-- 			<div id="meterExample" class="span3"></div> -->
-        <!-- 			<div id="counterExample" class="span3"></div> -->
-        <!-- 			<div id="linkedCounterExample" class="span6"></div> -->
-        <!-- 		</div> -->
-
+	<div class="container mainContent">
+		<p>Metrics Watcher currently supports these basic gauge types:</p>
+		<br />
+		<div class="row">
+			<div id="getCustomerExceptions" class="col-md-3"></div>
+            <div id="createCustomerExceptions" class="col-md-3"></div>
+			<div id="counterExample" class="col-md-3"></div>
+			<div id="linkedCounterExample" class="col-md-3"></div>
+			<div id="linkedTimerCounterExample" class="col-md-3"></div>
+			<div id="gaugeExample" class="col-md-3"></div>
+		</div>
+		<br />
+		<p>Metrics Watcher also comes with graphs composed of multiple gauges to support the types of instrumentation the Metrics library implements:</p>
+		<br />
+		<div class="row">
+			<div id="webExample"></div>
+		</div>
+		<br/>
+<!-- 		<div class="row"> -->
+<!-- 			<div id="log4jExample"></div> -->
+<!-- 		</div> -->
+<!-- 		<br /> -->
+<!-- 		<div class="row"> -->
+<!-- 			<div id="jvmExample"></div> -->
+<!-- 		</div> -->
+<!-- 		<br /> -->
+		<div class="row">
+			<div id="getCustomerTimer"></div>
+		</div>
         <div class="row">
-            <div id="customerCreateTimer" class="span12"></div>
-            <div id=customerCreateFailures class="span3"></div>
+            <div id="createCustomerTimer"></div>
         </div>
-
-        <div class="row">
-            <div id="customerFindTimer" class="span12"></div>
-            <div id=customerFindFailures class="span3"></div>
-        </div>
-    </div>
-    <!-- /container -->
-
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <!-- <script src="bootstrap/js/jquery.js"></script> -->
-    <script src="bootstrap/js/bootstrap-transition.js"></script>
-    <script src="bootstrap/js/bootstrap-alert.js"></script>
-    <script src="bootstrap/js/bootstrap-modal.js"></script>
-    <script src="bootstrap/js/bootstrap-dropdown.js"></script>
-    <script src="bootstrap/js/bootstrap-scrollspy.js"></script>
-    <script src="bootstrap/js/bootstrap-tab.js"></script>
-    <script src="bootstrap/js/bootstrap-tooltip.js"></script>
-    <script src="bootstrap/js/bootstrap-popover.js"></script>
-    <script src="bootstrap/js/bootstrap-button.js"></script>
-    <script src="bootstrap/js/bootstrap-collapse.js"></script>
-    <script src="bootstrap/js/bootstrap-carousel.js"></script>
-    <script src="bootstrap/js/bootstrap-typeahead.js"></script>
-
-
+		<br />
+<!-- 		<div class="row"> -->
+<!-- 			<div id="queryCache"></div> -->
+<!-- 		</div> -->
+<!-- 		<br /> -->
+	</div>
 </body>
 </html>
