@@ -1,5 +1,5 @@
-dropwizard-metrics-in-action
-============================
+metrics-in-action
+=================
 
 Example of using the metrics library in a JAX-RS, RESTEasy and Spring service. Utilising the following metrics libraries:
 
