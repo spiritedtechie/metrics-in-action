@@ -18,7 +18,7 @@ To get it running:
 
 2. Start a standalone instance of JBoss
 
-    ./bin/standalone.sh -b 0.0.0.0
+        ./bin/standalone.sh -b 0.0.0.0
     
 3. Build the HTTP service stub
 
