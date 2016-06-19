@@ -14,11 +14,11 @@ Setup
 API Usage
 ---------
 
-## To get the default customer by ID
+*To get the default customer by ID*
 
 GET http://localhost:8080/customers/1
 
-## To create a new customer
+*To create a new customer*
 
 POST http://localhost:8080/customers
 
@@ -38,10 +38,10 @@ ContentType: application/json
         "lastName": "Doe"
     }
 
-## To check the external HTTP service stub is deployed
+*To check the external HTTP service stub is deployed*
 
 GET http://localhost:8082/address
 
-## To get the metrics in JSON form
+*To get the metrics in JSON form *
 
 GET http://localhost:8080/metrics
