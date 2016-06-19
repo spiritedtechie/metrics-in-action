@@ -22,16 +22,14 @@ GET http://localhost:8080/customers/1
 
 POST http://localhost:8080/customers
 
-ContentType: application/xml
-
+    ContentType: application/xml
     <customer>
         <id>2</id>
         <firstName>John</firstName>
         <lastName>Doe</lastName>
     </customer>
 
-ContentType: application/json
-
+    ContentType: application/json
     {
         "id": "2",
         "firstName": "John",
