@@ -1,9 +1,9 @@
 Description
 -----------
 
-This is a simple stub REST service that returns an fixed address.
+This is a simple stub REST service that returns a fixed address.
 
-It is used by the customer API to show how the HTTP client (client side) can be instrumented by Metrics HTTP.
+It is used by the customer API to show how the HTTP client (client side) can be instrumented by Metrics-httpclient.
 
 This service is build using Dropwizard and JAX-RS.
 
