@@ -12,6 +12,6 @@ Setup
 
 1) Run the Address Lookup stub service
 
-  ./gradlew run
+    ./gradlew run
   
 It runs on port 8082 (as configured in local.yml)
