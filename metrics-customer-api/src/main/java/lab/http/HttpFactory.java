@@ -17,12 +17,9 @@ public class HttpFactory {
     }
 
     private void addHookToShutdownConnectionManager() {
-        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
-            @Override
-            public void run() {
-                if (httpClient != null) {
-                    httpClient.getConnectionManager().shutdown();
-                }
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            if (httpClient != null) {
+                httpClient.getConnectionManager().shutdown();
             }
         }));
     }

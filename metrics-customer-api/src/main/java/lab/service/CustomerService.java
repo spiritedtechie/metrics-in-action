@@ -1,12 +1,9 @@
-package lab.api;
+package lab.service;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-
+import com.codahale.metrics.annotation.Timed;
+import lab.api.CustomerResource;
 import lab.http.HttpFactory;
 import lab.model.Customer;
-
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -16,7 +13,9 @@ import org.apache.http.client.methods.HttpGet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.codahale.metrics.annotation.Timed;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 @Component
 public class CustomerService {
@@ -59,7 +58,7 @@ public class CustomerService {
 
     private String findAddressInformation() {
         final HttpClient http = httpFactory.getHttp();
-        final HttpGet httpget = new HttpGet("http://localhost:8080/http-service-stub/address");
+        final HttpGet httpget = new HttpGet("http://localhost:8082/address");
 
         HttpResponse resp;
         try {
@@ -74,7 +73,7 @@ public class CustomerService {
     private String extractAddressLine(HttpResponse resp) {
         if (resp != null && resp.getStatusLine().getStatusCode() == 200) {
             try {
-                return IOUtils.toString(resp.getEntity().getContent());
+                return IOUtils.toString(resp.getEntity().getContent(), "UTF-8");
             } catch (final Exception e) {
                 throw new RuntimeException("Unable to extract customer address from response", e);
             }
@@ -87,7 +86,7 @@ public class CustomerService {
         c1.setId("1");
         c1.setFirstName("Bob");
         c1.setLastName("Brown");
-        c1.setAddress("27 Coventry Street");
+        c1.setAddress("2 Coventry Street");
 
         customerMap.put(c1.getId(), c1);
     }

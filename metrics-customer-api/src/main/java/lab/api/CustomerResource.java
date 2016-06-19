@@ -1,29 +1,22 @@
 package lab.api;
 
-import java.net.URI;
-
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
-
+import com.codahale.metrics.annotation.ExceptionMetered;
+import com.codahale.metrics.annotation.Timed;
 import lab.model.Customer;
-
+import lab.service.CustomerService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.codahale.metrics.annotation.ExceptionMetered;
-import com.codahale.metrics.annotation.Timed;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
+import java.net.URI;
 
 @Component
-@Path("/api/customers")
+@Path("/customers")
 public class CustomerResource {
 
     private static final Log LOG = LogFactory.getLog(CustomerResource.class);
@@ -40,18 +33,19 @@ public class CustomerResource {
 
     @GET
     @Path("/{customerId}")
-    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     @Timed(name = "get-customer-timed")
     @ExceptionMetered(name = "get-customer-exception-meter")
     public Response getCustomer(@PathParam("customerId") final String customerId) {
         LOG.info("*** Customer Requested With Id: " + customerId);
         final Customer customer = service.findCustomer(customerId);
-        if (customer == null) return Response.status(Status.NOT_FOUND).entity("Customer not found").build();
+        if (customer == null)
+            return Response.status(Status.NOT_FOUND).entity("{\"error\":\"Customer not found\"}").build();
         return Response.ok(customer).build();
     }
 
     @POST
-    @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     @Timed(name = "create-customer-timed")
     @ExceptionMetered(name = "create-customer-exception-meter")
     public Response createCustomer(final Customer customer) throws Exception {
