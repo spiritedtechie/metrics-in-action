@@ -1,7 +1,7 @@
 Setup
 -----
 
-1) Ensure the Address lookup stub is running. Follow README instructions in folder.
+1) Ensure the Address lookup stub is running. Follow README for external-http-service-stub.
 
 2) Build the application
 
