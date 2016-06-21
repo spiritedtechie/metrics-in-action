@@ -39,8 +39,9 @@ public class CustomerResource {
     public Response getCustomer(@PathParam("customerId") final String customerId) {
         LOG.info("*** Customer Requested With Id: " + customerId);
         final Customer customer = service.findCustomer(customerId);
-        if (customer == null)
-            return Response.status(Status.NOT_FOUND).entity("{\"error\":\"Customer not found\"}").build();
+        if (customer == null) {
+            return Response.status(Status.NOT_FOUND).entity(customerNotFoundError()).build();
+        }
         return Response.ok(customer).build();
     }
 
@@ -52,6 +53,10 @@ public class CustomerResource {
         LOG.info("*** Customer Creation Requested: " + customer);
         final Customer createdCustomer = service.newCustomer(customer);
         return Response.created(new URI("/customer/" + customer.getId())).entity(createdCustomer).build();
+    }
+
+    private String customerNotFoundError() {
+        return "{\"error\":\"Customer not found\"}";
     }
 
 }

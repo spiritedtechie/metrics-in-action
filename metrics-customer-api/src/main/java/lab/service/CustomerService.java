@@ -20,7 +20,7 @@ import java.util.Map;
 @Component
 public class CustomerService {
 
-    private static final Log LOG = LogFactory.getLog(CustomerResource.class);
+    private static final Log LOG = LogFactory.getLog(CustomerService.class);
 
     private final Map<String, Customer> customerMap = Collections.synchronizedMap(new HashMap<String, Customer>());
 
@@ -30,23 +30,23 @@ public class CustomerService {
     public CustomerService(HttpFactory fact) {
         this.httpFactory = fact;
 
-        createDefaultCustomer();
+        createAndStoreDefaultCustomer();
     }
 
     public CustomerService() {
     }
 
     public Customer newCustomer(final Customer customer) {
-        if (customerMap.containsKey(customer.getId()))
+        if (customerMap.containsKey(customer.getId())) {
             throw new IllegalArgumentException("Customer already exists for id: " + customer.getId());
+        }
 
         if (customer.getAddress() == null) {
             final String address = findAddressInformation();
             customer.setAddress(address);
         }
 
-        customerMap.put(customer.getId(), customer);
-        LOG.debug("Customer map: " + customerMap);
+        storeCustomer(customer);
 
         return customer;
     }
@@ -81,14 +81,19 @@ public class CustomerService {
                 + resp.getStatusLine().getStatusCode());
     }
 
-    private void createDefaultCustomer() {
+    private void createAndStoreDefaultCustomer() {
         final Customer c1 = new Customer();
         c1.setId("1");
         c1.setFirstName("Bob");
         c1.setLastName("Brown");
         c1.setAddress("2 Coventry Street");
 
-        customerMap.put(c1.getId(), c1);
+        storeCustomer(c1);
+    }
+
+    private void storeCustomer(Customer customer) {
+        customerMap.put(customer.getId(), customer);
+        LOG.debug("Customer map: " + customerMap);
     }
 
 }
